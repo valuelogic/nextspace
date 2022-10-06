@@ -127,3 +127,10 @@
     filter: invert(1);
   }
 }
+
+/* custom utility */
+.dflexcol {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}

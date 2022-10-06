@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+const Ssg: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,16 +13,11 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Homepage
+        Ssg page for seo
         </h1>
-        <ul className={styles.navbar}>
-          <li><a href='http://localhost:3000/ssg'>ssg page</a></li>
-          <li><a href='http://localhost:3000/ssr'>ssr page</a></li>
-          <li><a href='http://localhost:3000/csr'>csr page</a></li>
-        </ul>
       </main>
     </div>
   )
 }
 
-export default Home
+export default Ssg
