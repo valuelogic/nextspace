@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 function Csr() {
   const [isLoading, setIsLoading] = useState(true)
-  const [SpaceData, setSpaceData] = useState(null)
+  const [spaceData, setSpaceData] = useState(null)
 
   useEffect(() => {
     async function fetchSpaceData() {
@@ -33,7 +33,7 @@ function Csr() {
         <h2>Missions</h2>
         <>
             {
-              SpaceData.map(mission => {
+              spaceData.map(mission => {
                 return (
                   <div key={mission.id}>
                     <h2>

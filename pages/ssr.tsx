@@ -16,8 +16,7 @@ function SsrPage({ rockets }) {
         <h1 className={styles.title}>SSR page</h1>
         <>
           {
-            rockets.map(rocket => {
-              return (
+            rockets.map(rocket => (
                 <div key={rocket.id}>
                   <h2>
                     {rocket.rocket_name}
@@ -28,7 +27,7 @@ function SsrPage({ rockets }) {
                   </div>
                 </div>
               )
-            })
+            )
           }
         </>
       </main>
