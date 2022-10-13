@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -12,13 +13,23 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Homepage
-        </h1>
+        <h1 className={styles.title}>Homepage</h1>
         <ul className={styles.navbar}>
-          <li><a href='http://localhost:3000/ssg'>ssg page</a></li>
-          <li><a href='http://localhost:3000/ssr'>ssr page</a></li>
-          <li><a href='http://localhost:3000/csr'>csr page</a></li>
+          <li>
+            <Link href="/ssg">
+              <a>ssg page</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/ssr">
+              <a>ssr page</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/csr">
+              <a>csr page</a>
+            </Link>
+          </li>
         </ul>
       </main>
     </div>

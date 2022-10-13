@@ -16,7 +16,7 @@ function Csr() {
     fetchSpaceData()
   }, [])
 
-  if(isLoading) {
+  if (isLoading) {
     return <h2>Loading ...</h2>
   }
 
@@ -32,25 +32,21 @@ function Csr() {
         <h1>Client side rendering page</h1>
         <h2>Missions</h2>
         <>
-            {
-              spaceData.map(mission => {
-                return (
-                  <div key={mission.id}>
-                    <h2>
-                      {mission.mission_name}
-                    </h2>
-                    <div className={styles.dflexcol}>
-                      <span>{mission.description}</span>
-                    </div>
-                  </div>
-                )
-              })
-            }
-          </>
+
+          {spaceData.map((mission: any) => {
+            return (
+              <div key={mission.id}>
+                <h2>{mission.mission_name}</h2>
+                <div className={styles.dflexcol}>
+                  <span>{mission.description}</span>
+                </div>
+              </div>
+            )
+          })}
+        </>
       </main>
     </div>
   )
 }
-
 
 export default Csr

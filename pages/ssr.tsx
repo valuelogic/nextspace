@@ -16,21 +16,15 @@ function SsrPage({ rockets }: any) {
       <main className={styles.main}>
         <h1 className={styles.title}>SSR page</h1>
         <>
-          {
-            rockets.map(rocket => (
-                // rocket: any
-                <div key={rocket.id}>
-                  <h2>
-                    {rocket.rocket_name}
-                  </h2>
-                  <div className={styles.dflexcol}>
-                    <span>type: {rocket.rocket_type}</span>
-                    <span>{rocket.description}</span>
-                  </div>
-                </div>
-              )
-            )
-          }
+          {rockets.map((rocket: any) => (
+            <div key={rocket.id}>
+              <h2>{rocket.rocket_name}</h2>
+              <div className={styles.dflexcol}>
+                <span>type: {rocket.rocket_type}</span>
+                <span>{rocket.description}</span>
+              </div>
+            </div>
+          ))}
         </>
       </main>
     </div> // container
@@ -43,7 +37,7 @@ export async function getServerSideProps() {
   const data = await res.json()
 
   // Pass data to the page via props
-  return { 
+  return {
     props: {
       rockets: data,
     },
