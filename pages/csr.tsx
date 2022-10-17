@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 function Csr() {
   const [isLoading, setIsLoading] = useState(true)
-  const [spaceData, setSpaceData] = useState(null)
+  const [spaceData, setSpaceData] = useState([])
 
   useEffect(() => {
     async function fetchSpaceData() {
@@ -32,7 +32,6 @@ function Csr() {
         <h1>Client side rendering page</h1>
         <h2>Missions</h2>
         <>
-// tutaj jest problem nie wiem czemu spaceData wyskakuje jako blad w buildzie i wyskakuje object is possibly null pewnie deklaracja jakas zla
           {spaceData.map((mission: any) => {
             return (
               <div key={mission.id}>

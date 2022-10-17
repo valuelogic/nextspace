@@ -1,8 +1,7 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-const Ssg: NextPage = () => {
+function Ssg({ rockets }: any) {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,9 +12,32 @@ const Ssg: NextPage = () => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Ssg page for seo</h1>
+
+        {rockets.map((rocket: any) => (
+          <div key={rocket.id}>
+            <h2>{rocket.rocket_name}</h2>
+            <div className={styles.dflexcol}>
+              <span>type: {rocket.rocket_type}</span>
+              <span>{rocket.description}</span>
+            </div>
+          </div>
+        ))}
       </main>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://api.spacexdata.com/v3/rockets`)
+  const rockets = await res.json()
+
+  // Pass data to the page via props
+  return {
+    props: {
+      rockets,
+    },
+  }
 }
 
 export default Ssg
