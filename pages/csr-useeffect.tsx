@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import useSWR from 'swr'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-function Csr() {
+function CsrEffect() {
   const [isLoading, setIsLoading] = useState(true)
   const [spaceData, setSpaceData] = useState([])
 
@@ -29,7 +30,7 @@ function Csr() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Client side rendering page</h1>
+        <h1>Client side rendering page use effect</h1>
         <h2>Missions</h2>
         <>
           {spaceData.map((mission: any) => {
@@ -48,4 +49,4 @@ function Csr() {
   )
 }
 
-export default Csr
+export default CsrEffect

@@ -26,7 +26,7 @@ const Home: NextPage = () => {
             </Link>
           </li>
           <li>
-            <Link href="/csr">
+            <Link href="/csr-swr">
               <a>csr page</a>
             </Link>
           </li>
