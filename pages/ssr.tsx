@@ -1,9 +1,10 @@
 import Head from 'next/head'
+//import { json } from 'stream/consumers'
 import styles from '../styles/Home.module.css'
 
 // tutaj wrzucilem funkcje zamiast const nextjs page bo nie wiedzialem czy wogole sie da wyciagnac w srodku conts rzeczy z propsa z '.map'
 
-function SsrPage({ rockets }) {
+function SsrPage({ rockets }: any) {
   return (
     <div className={styles.container}>
       <Head>
@@ -15,20 +16,15 @@ function SsrPage({ rockets }) {
       <main className={styles.main}>
         <h1 className={styles.title}>SSR page</h1>
         <>
-          {
-            rockets.map(rocket => (
-                <div key={rocket.id}>
-                  <h2>
-                    {rocket.rocket_name}
-                  </h2>
-                  <div className={styles.dflexcol}>
-                    <span>type: {rocket.rocket_type}</span>
-                    <span>{rocket.description}</span>
-                  </div>
-                </div>
-              )
-            )
-          }
+          {rockets.map((rocket: any) => (
+            <div key={rocket.id}>
+              <h2>{rocket.rocket_name}</h2>
+              <div className={styles.dflexcol}>
+                <span>type: {rocket.rocket_type}</span>
+                <span>{rocket.description}</span>
+              </div>
+            </div>
+          ))}
         </>
       </main>
     </div> // container
@@ -41,7 +37,7 @@ export async function getServerSideProps() {
   const data = await res.json()
 
   // Pass data to the page via props
-  return { 
+  return {
     props: {
       rockets: data,
     },
