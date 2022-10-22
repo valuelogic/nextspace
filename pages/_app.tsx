@@ -1,7 +1,25 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { storyblokInit, apiPlugin } from '@storyblok/react'
+import Page from '../components/Page'
+import Feature from '../components/Feature'
+import Grid from '../components/Grid'
+import Teaser from '../components/Teaser'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const components = {
+  feature: Feature,
+  grid: Grid,
+  teaser: Teaser,
+  page: Page,
+}
+
+storyblokInit({
+  //accessToken: process.env.STORY_BLOK_KEY,
+  accessToken: 'E59o9cogbsNQt4avIhJrBAtt',
+  use: [apiPlugin],
+  components,
+})
+
+function MyApp({ Component, pageProps }: any) {
   return <Component {...pageProps} />
 }
 
