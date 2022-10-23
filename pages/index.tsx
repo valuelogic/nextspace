@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '../styles/Home.module.css'
 import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
 
 export default function Home({ story: initialStory }: any) {
-  const story = useStoryblokState(initialStory)
-
-  console.log(story)
+  const story: any = useStoryblokState(initialStory)
 
   if (!story.content) {
     return <div>Loading...</div>
@@ -25,7 +24,7 @@ export default function Home({ story: initialStory }: any) {
       </header>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Homepage</h1>
+        <h1 className={styles.title}>{story ? story.name : 'My Site'}</h1>
         <ul className={styles.navbar}>
           <li>
             <Link href="/ssg">
@@ -43,23 +42,22 @@ export default function Home({ story: initialStory }: any) {
             </Link>
           </li>
         </ul>
+        <StoryblokComponent blok={story.content} />
       </main>
-
-      <StoryblokComponent blok={story.content} />
     </div>
   )
 }
 
 export async function getStaticProps() {
   // the slug of the story
-  let slug = 'home'
+  const slug = 'home'
 
-  let params = {
+  const params = {
     version: 'draft', // or 'published'
   }
 
   const storyblokApi = getStoryblokApi()
-  let { data } = await storyblokApi.get(`cdn/stories/${slug}`, params)
+  const { data } = await storyblokApi.get(`cdn/stories/${slug}`, params)
 
   return {
     props: {
