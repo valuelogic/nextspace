@@ -1,7 +1,7 @@
-import useSWR from 'swr'
-import fetcher from '../functions/fetcher'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import useSWR from 'swr'
+import fetcher from '../functions/fetcher'
 
 function CsrSWR() {
   const { data, error } = useSWR('missions', fetcher)

@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
-import useSWR from 'swr'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import { useState, useEffect } from 'react'
+import useSWR from 'swr'
+
 
 function CsrEffect() {
   const [isLoading, setIsLoading] = useState(true)
