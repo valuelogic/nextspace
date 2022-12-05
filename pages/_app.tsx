@@ -1,9 +1,14 @@
 import '../styles/globals.css'
 import { storyblokInit, apiPlugin } from '@storyblok/react'
-import Page from '../components/Page'
-import Feature from '../components/Feature'
-import Grid from '../components/Grid'
-import Teaser from '../components/Teaser'
+// import Page from '../components/Page'
+// import Feature from '../components/Feature'
+// import Grid from '../components/Grid'
+// import Teaser from '../components/Teaser'
+
+import Page from '@components/Page'
+import Feature from '@components/Feature'
+import Grid from '@components/Grid'
+import Teaser from '@components/Teaser'
 
 const components = {
   feature: Feature,
