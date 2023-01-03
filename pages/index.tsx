@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import styles from '../styles/Home.module.css'
 import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
 

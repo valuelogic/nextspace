@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { storyblokInit, apiPlugin } from '@storyblok/react'
 import Page from '@components/Page'
 import Feature from '@components/Feature'
