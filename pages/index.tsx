@@ -1,9 +1,15 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import { useStoryblokState, getStoryblokApi, StoryblokComponent } from '@storyblok/react'
 
-const Home: NextPage = () => {
+export default function Home({ story: initialStory }: any) {
+  const story: any = useStoryblokState(initialStory)
+
+  if (!story.content) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,8 +18,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <header>
+        <h1>{story ? story.name : 'My Site'}</h1>
+      </header>
+
       <main className={styles.main}>
-        <h1 className={styles.title}>Homepage</h1>
+        <h1 className={styles.title}>{story ? story.name : 'My Site'}</h1>
         <ul className={styles.navbar}>
           <li>
             <Link href="/ssg">
@@ -31,9 +41,27 @@ const Home: NextPage = () => {
             </Link>
           </li>
         </ul>
+        <StoryblokComponent blok={story.content} />
       </main>
     </div>
   )
 }
 
-export default Home
+export async function getStaticProps() {
+  // the slug of the story
+  const slug = 'home'
+
+  const params = {
+    version: 'draft', // or 'published'
+  }
+
+  const storyblokApi = getStoryblokApi()
+  const { data } = await storyblokApi.get(`cdn/stories/${slug}`, params)
+
+  return {
+    props: {
+      story: data ? data.story : false,
+      key: data ? data.story.id : false,
+    },
+  }
+}
